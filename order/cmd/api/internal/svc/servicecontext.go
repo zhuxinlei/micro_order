@@ -18,7 +18,7 @@ type ServiceContext struct {
 }
 
 func NewServiceContext(c config.Config) *ServiceContext {
-	DB, err := gorm.Open("mysql", "root:12345678@tcp(127.0.0.1:3306)/github.com/zhuxinlei/micro_order?charset=utf8&parseTime=true&loc=UTC")
+	DB, err := gorm.Open("mysql", "root:12345678@tcp(127.0.0.1:3306)/micro_order?charset=utf8&parseTime=true&loc=UTC")
 	if err != nil {
 		logx.Errorf("连接数据库出错%s", err.Error())
 		fmt.Println("连接数据库出错")
