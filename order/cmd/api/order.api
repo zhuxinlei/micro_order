@@ -1,0 +1,29 @@
+type (
+	Reply {
+		Code    int         `json:"code"`
+		Message string      `json:"message"`
+		Data    interface{} `json:"data"`
+	}
+	BuyBookReq {
+		BookID int `json:"book_id"`
+	}
+
+	SearchBookReq {
+		BookID int `json:"book_id"`
+	}
+)
+
+service order-api {
+	@handler buy_book
+	post /buy/book (BuyBookReq) returns (Reply)
+}
+
+service order-api {
+	@handler search_book
+	post /search/book () returns (Reply)
+}
+
+service order-api {
+	@handler search_user
+	post /search/user () returns (Reply)
+}
