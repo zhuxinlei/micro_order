@@ -10,6 +10,7 @@ import (
 )
 
 func RegisterHandlers(engine *rest.Server, serverCtx *svc.ServiceContext) {
+
 	engine.AddRoutes(
 		[]rest.Route{
 			{
@@ -18,6 +19,7 @@ func RegisterHandlers(engine *rest.Server, serverCtx *svc.ServiceContext) {
 				Handler: buy_bookHandler(serverCtx),
 			},
 		},
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 	)
 
 	engine.AddRoutes(
@@ -28,6 +30,7 @@ func RegisterHandlers(engine *rest.Server, serverCtx *svc.ServiceContext) {
 				Handler: search_bookHandler(serverCtx),
 			},
 		},
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 	)
 
 	engine.AddRoutes(
@@ -38,5 +41,6 @@ func RegisterHandlers(engine *rest.Server, serverCtx *svc.ServiceContext) {
 				Handler: search_userHandler(serverCtx),
 			},
 		},
+
 	)
 }
